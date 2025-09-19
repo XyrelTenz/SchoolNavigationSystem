@@ -8,12 +8,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { capitalizeFirstLetter } from '../../helper/stringHelper';
+import { Building, Room } from '../../types/search';
+import { categories, type Category } from '../../utils/category';
 
 export default function UserLayout() {
   const [searchText, setSearchText] = useState('');
-  const [category, setCategory] = useState<'Building' | 'Room'>('Building');
+  const [category, setCategory] = useState<Category>('Building');
 
-  const quickNavigation = [
+  const quickNavigation: Building[] = [
     { id: 1, title: 'Main Building', icon: 'business-outline', color: '#6366F1' },
     { id: 2, title: 'Science Labs', icon: 'flask-outline', color: '#8B5CF6' },
     { id: 3, title: 'Library', icon: 'book-outline', color: '#10B981' },
@@ -22,13 +25,16 @@ export default function UserLayout() {
     { id: 6, title: 'STA Building', icon: 'school-outline', color: '#06B6D4' },
   ];
 
-  const recentSearches = [
+  const recentSearches: Room[] = [
     { id: 1, room: 'Room 304', building: 'Science Building' },
     { id: 2, room: 'Computer Lab 2', building: 'Tech Building' },
     { id: 3, room: 'Principal Office', building: 'Admin Building' },
   ];
 
-  const filteredData =
+  // Type guard
+  const isBuilding = (item: Building | Room): item is Building => 'title' in item;
+
+  const filteredData: (Building | Room)[] =
     category === 'Building'
       ? quickNavigation.filter((item) =>
           item.title.toLowerCase().includes(searchText.toLowerCase())
@@ -55,20 +61,14 @@ export default function UserLayout() {
 
       {/* Category Selector */}
       <View style={styles.categoryContainer}>
-        {['Building', 'Room'].map((cat) => (
+        {categories.map((cat) => (
           <TouchableOpacity
             key={cat}
-            style={[
-              styles.categoryButton,
-              category === cat && styles.categoryActive,
-            ]}
-            onPress={() => setCategory(cat as 'Building' | 'Room')}
+            style={[styles.categoryButton, category === cat && styles.categoryActive]}
+            onPress={() => setCategory(cat)}
           >
             <Text
-              style={[
-                styles.categoryText,
-                category === cat && styles.categoryTextActive,
-              ]}
+              style={[styles.categoryText, category === cat && styles.categoryTextActive]}
             >
               {cat}
             </Text>
@@ -81,23 +81,32 @@ export default function UserLayout() {
         {filteredData.length === 0 ? (
           <View style={styles.notFound}>
             <Ionicons name="alert-circle-outline" size={40} color="#EF4444" />
-            <Text style={styles.notFoundText}>No {category.toLowerCase()} found</Text>
+            <Text style={styles.notFoundText}>
+              No {capitalizeFirstLetter(category)} Found
+            </Text>
           </View>
         ) : (
           <FlatList
             data={filteredData}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) =>
-              category === 'Building' ? (
+              isBuilding(item) ? (
                 <TouchableOpacity style={styles.buildingRow}>
-                  <View style={[styles.buildingIcon, { backgroundColor: `${item.color}15` }]}>
+                  <View
+                    style={[styles.buildingIcon, { backgroundColor: `${item.color}15` }]}
+                  >
                     <Ionicons name={item.icon as any} size={24} color={item.color} />
                   </View>
                   <Text style={styles.buildingTitle}>{item.title}</Text>
                 </TouchableOpacity>
               ) : (
                 <View style={styles.roomRow}>
-                  <Ionicons name="home-outline" size={20} color="#10B981" style={{ marginRight: 12 }} />
+                  <Ionicons
+                    name="home-outline"
+                    size={20}
+                    color="#10B981"
+                    style={{ marginRight: 12 }}
+                  />
                   <View>
                     <Text style={styles.roomTitle}>{item.room}</Text>
                     <Text style={styles.roomBuilding}>{item.building}</Text>
@@ -129,11 +138,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   searchInput: { flex: 1, marginLeft: 8, fontSize: 16, color: '#374151' },
-  categoryContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 16,
-    marginBottom: 8,
-  },
+  categoryContainer: { flexDirection: 'row', paddingHorizontal: 16, marginBottom: 8 },
   categoryButton: {
     paddingVertical: 6,
     paddingHorizontal: 14,
@@ -146,14 +151,8 @@ const styles = StyleSheet.create({
   categoryText: { fontSize: 14, color: '#374151', fontWeight: '600' },
   categoryTextActive: { color: 'white' },
   resultsContainer: { flex: 1, paddingHorizontal: 16 },
-  notFound: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 50,
-  },
+  notFound: { flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 50 },
   notFoundText: { marginTop: 8, fontSize: 16, color: '#EF4444' },
-
   buildingRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -161,16 +160,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#E5E7EB',
   },
-  buildingIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 12,
-  },
+  buildingIcon: { width: 40, height: 40, borderRadius: 20, justifyContent: 'center', alignItems: 'center', marginRight: 12 },
   buildingTitle: { fontSize: 16, fontWeight: '600', color: '#374151' },
-
   roomRow: {
     flexDirection: 'row',
     alignItems: 'center',
