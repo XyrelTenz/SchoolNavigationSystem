@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from 'app/types/navigation';
+import { useCallback, useMemo } from 'react';
 import {
   Dimensions,
   ScrollView,
@@ -17,56 +18,93 @@ type LoginScreenProps = {
 };
 
 export default function UserLayout({ navigation } : LoginScreenProps) {
-  const currentDate = new Date().toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  // Memoized current date
+  const currentDate = useMemo(() => {
+    return new Date().toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  }, []);
 
-  const navigationFeatures = [
+  // Memoized data arrays
+  const navigationFeatures = useMemo(() => [
     { id: 1, title: 'Find Classroom', icon: 'location-outline', color: '#EF4444', description: 'Locate any room' },
     { id: 2, title: 'Campus Map', icon: 'map-outline', color: '#3B82F6', description: 'Interactive map' },
     { id: 3, title: 'Directions', icon: 'navigate-outline', color: '#10B981', description: 'Step-by-step guide' },
     { id: 4, title: 'Nearby Places', icon: 'business-outline', color: '#F59E0B', description: 'Cafeteria, library...' },
-  ];
+  ], []);
 
-  const quickNavigation = [
+  const quickNavigation = useMemo(() => [
     { id: 1, title: 'Main Building', icon: 'business-outline', color: '#6366F1', floors: '3 Floors' },
     { id: 2, title: 'Science Labs', icon: 'flask-outline', color: '#8B5CF6', floors: 'Lab Complex' },
     { id: 3, title: 'Library', icon: 'book-outline', color: '#10B981', floors: '2nd Floors' },
     { id: 4, title: 'Cafeteria', icon: 'restaurant-outline', color: '#F59E0B', floors: 'Ground Floor' },
     { id: 5, title: 'IT Building', icon: 'desktop-outline', color: '#EF4444', floors: '2 Floors' },
     { id: 6, title: 'STA Building', icon: 'school-outline', color: '#06B6D4', floors: 'Main Hall' },
-  ];
+  ], []);
 
-  const recentSearches = [
+  const recentSearches = useMemo(() => [
     { id: 1, room: 'Room 304', building: 'Science Building', time: '10 min ago' },
     { id: 2, room: 'Computer Lab 2', building: 'Tech Building', time: '1 hour ago' },
     { id: 3, room: 'Principal Office', building: 'Admin Building', time: 'Yesterday' },
-  ];
+  ], []);
+
+  // Memoized render functions
+  const renderFeature = useCallback((feature) => (
+    <TouchableOpacity key={feature.id} style={styles.featureCard}>
+      <View style={styles.featureIcon}>
+        <Ionicons name={feature.icon as any} size={28} color={feature.color} />
+      </View>
+      <Text style={styles.featureTitle}>{feature.title}</Text>
+      <Text style={styles.featureDescription}>{feature.description}</Text>
+    </TouchableOpacity>
+  ), []);
+
+  const renderBuilding = useCallback((building) => (
+    <TouchableOpacity key={building.id} style={styles.buildingCard}>
+      <View style={[styles.buildingIcon, { backgroundColor: `${building.color}15` }]}>
+        <Ionicons name={building.icon as any} size={24} color={building.color} />
+      </View>
+      <View style={styles.buildingInfo}>
+        <Text style={styles.buildingTitle}>{building.title}</Text>
+        <Text style={styles.buildingFloors}>{building.floors}</Text>
+      </View>
+      <Ionicons name="chevron-forward-outline" size={20} color="#9CA3AF" />
+    </TouchableOpacity>
+  ), []);
+
+  const renderSearch = useCallback((search) => (
+    <TouchableOpacity key={search.id} style={styles.searchCard}>
+      <View style={styles.searchIcon}>
+        <Ionicons name="time-outline" size={20} color="#6B7280" />
+      </View>
+      <View style={styles.searchContent}>
+        <Text style={styles.searchRoom}>{search.room}</Text>
+        <Text style={styles.searchBuilding}>{search.building}</Text>
+      </View>
+      <View style={styles.searchMeta}>
+        <Text style={styles.searchTime}>{search.time}</Text>
+        <Ionicons name="arrow-forward-outline" size={16} color="#9CA3AF" />
+      </View>
+    </TouchableOpacity>
+  ), []);
 
   return (
     <View style={styles.container}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
-      >
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
         {/* Header */}
         <View style={styles.header}>
           <View>
             <Text style={styles.greeting}>JHCSC Navigator</Text>
             <Text style={styles.date}>Find your way around campus</Text>
-            {/* Current Date */}
             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 2 }}>
               <Ionicons name="calendar-outline" size={16} color="#6B7280" style={{ marginRight: 4 }} />
               <Text style={styles.currentDate}>{currentDate}</Text>
             </View>
           </View>
-          <TouchableOpacity
-            style={styles.searchButton}
-            onPress={() => navigation.navigate('Search')}
-            >
+          <TouchableOpacity style={styles.searchButton} onPress={() => navigation.navigate('Search')}>
             <Ionicons name="search-outline" size={24} color="#6B7280" />
           </TouchableOpacity>
         </View>
@@ -84,38 +122,19 @@ export default function UserLayout({ navigation } : LoginScreenProps) {
           </View>
         </View>
 
-        {/* Main Navigation Features */}
+        {/* Navigation Tools */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Navigation Tools</Text>
           <View style={styles.featuresGrid}>
-            {navigationFeatures.map((feature) => (
-              <TouchableOpacity key={feature.id} style={styles.featureCard}>
-                <View style={[styles.featureIcon]}>
-                  <Ionicons name={feature.icon as any} size={28} color={feature.color} />
-                </View>
-                <Text style={styles.featureTitle}>{feature.title}</Text>
-                <Text style={styles.featureDescription}>{feature.description}</Text>
-              </TouchableOpacity>
-            ))}
+            {navigationFeatures.map(renderFeature)}
           </View>
         </View>
 
-        {/* Quick Building Access */}
+        {/* Campus Buildings */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Campus Buildings</Text>
           <View style={styles.buildingsGrid}>
-            {quickNavigation.map((building) => (
-              <TouchableOpacity key={building.id} style={styles.buildingCard}>
-                <View style={[styles.buildingIcon, { backgroundColor: `${building.color}15` }]}>
-                  <Ionicons name={building.icon as any} size={24} color={building.color} />
-                </View>
-                <View style={styles.buildingInfo}>
-                  <Text style={styles.buildingTitle}>{building.title}</Text>
-                  <Text style={styles.buildingFloors}>{building.floors}</Text>
-                </View>
-                <Ionicons name="chevron-forward-outline" size={20} color="#9CA3AF" />
-              </TouchableOpacity>
-            ))}
+            {quickNavigation.map(renderBuilding)}
           </View>
         </View>
 
@@ -127,21 +146,7 @@ export default function UserLayout({ navigation } : LoginScreenProps) {
               <Text style={styles.clearButton}>Clear All</Text>
             </TouchableOpacity>
           </View>
-          {recentSearches.map((search) => (
-            <TouchableOpacity key={search.id} style={styles.searchCard}>
-              <View style={styles.searchIcon}>
-                <Ionicons name="time-outline" size={20} color="#6B7280" />
-              </View>
-              <View style={styles.searchContent}>
-                <Text style={styles.searchRoom}>{search.room}</Text>
-                <Text style={styles.searchBuilding}>{search.building}</Text>
-              </View>
-              <View style={styles.searchMeta}>
-                <Text style={styles.searchTime}>{search.time}</Text>
-                <Ionicons name="arrow-forward-outline" size={16} color="#9CA3AF" />
-              </View>
-            </TouchableOpacity>
-          ))}
+          {recentSearches.map(renderSearch)}
         </View>
 
         {/* Emergency Info */}
@@ -156,12 +161,12 @@ export default function UserLayout({ navigation } : LoginScreenProps) {
           <Ionicons name="chevron-forward-outline" size={20} color="#EF4444" />
         </View>
 
-        {/* Bottom Spacing for Tab Bar */}
         <View style={styles.bottomSpacing} />
       </ScrollView>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
