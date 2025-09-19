@@ -1,38 +1,36 @@
 {
   "expo": {
-    "name": "my-expo-app",
-    "slug": "my-expo-app",
+    "name": "School Navigation System",
+    "slug": "school-navigation-system",
     "version": "1.0.0",
-
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-
-    "experiments": {
-      "tsconfigPaths": true
-    },
-
-    "plugins": [],
-
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-
+    "icon": "./assets/SchoolLogo.png",
     "userInterfaceStyle": "light",
-
+    "orientation": "portrait",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/NavigationLogo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#600EE6"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/NavigationLogo.png",
+        "backgroundColor": "#600EE6"
       }
-    }
+    },
+    "web": {
+      "favicon": "./assets/SchoolLogo.png"
+    },
+    "experiments": {
+      "tsconfigPaths": true
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
