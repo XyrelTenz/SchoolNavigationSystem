@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   focusedContainer: {
-    borderColor: '#600EE6',
+    borderColor: '#16A34A',
   },
   input: {
     flex: 1,

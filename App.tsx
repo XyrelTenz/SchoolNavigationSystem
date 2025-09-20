@@ -26,7 +26,7 @@ export default function App() {
           options={{
             title: '',
             headerBackTitle: 'Back',
-            headerTintColor: '#600EE6',
+            headerTintColor: '#16A34A',
             headerShadowVisible: false,
             headerStyle: {
               backgroundColor: 'white',
@@ -39,7 +39,7 @@ export default function App() {
           options={{
             title: '',
             headerBackTitle: 'Back',
-            headerTintColor: '#600EE6',
+            headerTintColor: '#16A34A',
             headerShadowVisible: false,
             headerStyle: {
               backgroundColor: 'white',
@@ -52,7 +52,7 @@ export default function App() {
           options={{
             title: '',
             headerBackTitle: 'Back',
-            headerTintColor: '#600EE6',
+            headerTintColor: '#16A34A',
             headerShadowVisible: false,
             headerShown: false,
             headerStyle: {
@@ -67,7 +67,7 @@ export default function App() {
           options={{
             title: '',
             headerBackTitle: 'Back',
-            headerTintColor: '#600EE6',
+            headerTintColor: '#16A34A',
             headerShadowVisible: false,
             headerShown: false,
             headerStyle: {

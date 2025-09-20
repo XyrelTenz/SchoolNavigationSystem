@@ -13,22 +13,22 @@ export default function HomeScreen({ navigation }: LoginScreenProps) {
       {
         title: 'Welcome to School Navigation',
         description: 'Find classrooms, buildings, and facilities easily.',
-        image: require('../assets/NavigationLogo.png'),
+        image: require('@assets/JHCSC.png'),
       },
       {
         title: 'Interactive Campus Map',
         description: 'Explore your school with real-time maps and directions.',
-        image: require('../assets/NavigationLogo.png'),
+        image: require('@assets/JHCSC.png'),
       },
       {
         title: 'Plan Your Day',
         description: 'Check class locations and nearby facilities before going.',
-        image: require('../assets/NavigationLogo.png'),
+        image: require('@assets/JHCSC.png'),
       },
       {
         title: 'Get Started',
         description: 'Login or Sign Up to access the full app features.',
-        image: require('../assets/NavigationLogo.png'),
+        image: require('@assets/JHCSC.png'),
         isAuthStep: true,
       },
     ],
@@ -53,7 +53,7 @@ export default function HomeScreen({ navigation }: LoginScreenProps) {
           style={{
             fontSize: 22,
             fontWeight: 'bold',
-            color: '#600EE6',
+            color: '#16A34A',
             textAlign: 'center',
             marginTop: 16,
           }}>
@@ -76,7 +76,7 @@ export default function HomeScreen({ navigation }: LoginScreenProps) {
               style={{
                 width: '100%',
                 padding: 14,
-                backgroundColor: '#600EE6',
+                backgroundColor: '#16A34A',
                 borderRadius: 8,
                 marginBottom: 12,
                 alignItems: 'center',
@@ -90,12 +90,12 @@ export default function HomeScreen({ navigation }: LoginScreenProps) {
                 width: '100%',
                 padding: 14,
                 borderWidth: 2,
-                borderColor: '#600EE6',
+                borderColor: '#16A34A',
                 borderRadius: 8,
                 alignItems: 'center',
               }}
               onPress={() => navigation.navigate('Signup')}>
-              <Text style={{ color: '#600EE6', fontWeight: 'bold', fontSize: 16 }}>SIGN UP</Text>
+              <Text style={{ color: '#111827', fontWeight: 'bold', fontSize: 16 }}>SIGN UP</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -113,7 +113,7 @@ export default function HomeScreen({ navigation }: LoginScreenProps) {
                   width: step === index ? 20 : 8,
                   height: 8,
                   borderRadius: 4,
-                  backgroundColor: step === index ? '#600EE6' : '#D1D5DB',
+                  backgroundColor: step === index ? '#16A34A' : '#D1D5DB',
                   marginHorizontal: 4,
                 }}
               />
@@ -132,14 +132,14 @@ export default function HomeScreen({ navigation }: LoginScreenProps) {
             }}>
             {step > 0 ? (
               <TouchableOpacity onPress={prevStep}>
-                <Ionicons name="arrow-back-circle" size={48} color="#600EE6" />
+                <Ionicons name="arrow-back-circle" size={48} color="#16A34A" />
               </TouchableOpacity>
             ) : (
               <View style={{ width: 48 }} />
             )}
 
             <TouchableOpacity onPress={nextStep}>
-              <Ionicons name="arrow-forward-circle" size={48} color="#600EE6" />
+              <Ionicons name="arrow-forward-circle" size={48} color="#16A34A" />
             </TouchableOpacity>
           </View>
         </View>

@@ -11,11 +11,11 @@ export const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   focusedContainer: {
-    borderColor: '#600EE6',
+    borderColor: '#16A34A',
   },
   input: {
     flex: 1,
     fontSize: 16,
-    color: '#374151',
+    color: '#414757',
   },
 });

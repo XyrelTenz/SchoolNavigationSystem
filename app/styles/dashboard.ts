@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
   scrollContent: {
     paddingBottom: 100,
   },
+  //Header
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -20,10 +21,15 @@ export const styles = StyleSheet.create({
   greeting: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#600EE6',
+    color: '#16A34A',
   },
   date: {
     fontSize: 14,
+    color: '#414757',
+    marginTop: 2,
+  },
+  currentDate: {
+    fontSize: 12,
     color: '#414757',
     marginTop: 2,
   },
@@ -35,6 +41,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  //Cards
   statsCard: {
     marginHorizontal: 20,
     marginVertical: 15,
@@ -43,7 +50,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderLeftWidth: 4,
-    borderLeftColor: '#600EE6',
+    borderLeftColor: '#16A34A',
   },
   statsContent: {
     flex: 1,
@@ -62,6 +69,7 @@ export const styles = StyleSheet.create({
   statsIcon: {
     marginLeft: 15,
   },
+  //Navigation Section
   section: {
     marginTop: 25,
     paddingHorizontal: 20,
@@ -245,10 +253,5 @@ export const styles = StyleSheet.create({
   },
   bottomSpacing: {
     height: 20,
-  },
-  currentDate: {
-    fontSize: 12,
-    color: '#414757',
-    marginTop: 2,
   },
 });

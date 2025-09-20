@@ -147,19 +147,23 @@ export default function UserLayout({ navigation }: LoginScreenProps) {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
         {/* Header */}
         <View style={styles.header}>
-          <View>
-            <Text style={styles.greeting}>JHCSC Navigator</Text>
-            <Text style={styles.date}>Find your way around campus</Text>
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 2 }}>
-              <Ionicons
-                name="calendar-outline"
-                size={16}
-                color="#6B7280"
-                style={{ marginRight: 4 }}
-              />
-              <Text style={styles.currentDate}>{currentDate}</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View>
+              <Text style={styles.greeting}>ZDSSU Navigator</Text>
+              <Text style={styles.date}>Find your way around campus</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 2 }}>
+                <Ionicons
+                  name="calendar-outline"
+                  size={16}
+                  color="#6B7280"
+                  style={{ marginRight: 4 }}
+                />
+                <Text style={styles.currentDate}>{currentDate}</Text>
+              </View>
             </View>
           </View>
+
+          {/* Search button */}
           <TouchableOpacity
             style={styles.searchButton}
             onPress={() => navigation.navigate('Search')}>

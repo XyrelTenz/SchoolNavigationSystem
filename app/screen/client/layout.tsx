@@ -1,8 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import '';
 import Building from './building';
 import Home from './dashboard';
 import Map from './maps';
@@ -27,7 +26,7 @@ export default function MainLayout() {
             paddingBottom: Platform.OS === 'ios' ? 8 : 5,
             paddingTop: 8,
           },
-          tabBarActiveTintColor: '#6366F1',
+          tabBarActiveTintColor: '#16A34A',
           tabBarInactiveTintColor: '#9CA3AF',
           tabBarLabelStyle: {
             fontSize: 11,
@@ -75,22 +74,36 @@ export default function MainLayout() {
           name="Maps"
           component={Map}
           options={{
-            tabBarIcon: ({ color, size, focused }) => (
-              <Ionicons
-                name={focused ? 'map' : 'map-outline'}
-                size={focused ? size + 2 : size}
-                color={color}
-              />
+            tabBarLabel: () => null,
+            tabBarIcon: ({ focused }) => (
+              <View
+                style={{
+                  top: -20,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  backgroundColor: '#16A34A',
+                  width: 60,
+                  height: 60,
+                  borderRadius: 30,
+                  elevation: 2,
+                  shadowColor: '#000',
+                  shadowOffset: { width: 0, height: 4 },
+                  shadowOpacity: 0.2,
+                  shadowRadius: 3.5,
+                }}>
+                <Ionicons name={focused ? 'map' : 'map-outline'} size={28} color="white" />
+              </View>
             ),
           }}
         />
         <Tab.Screen
-          name="Building"
+          name="NearbyBuilding"
           component={Building}
           options={{
+            title: 'Nearby',
             tabBarIcon: ({ color, size, focused }) => (
               <Ionicons
-                name={focused ? 'business' : 'business-outline'}
+                name={focused ? 'location' : 'location-outline'}
                 size={focused ? size + 2 : size}
                 color={color}
               />
