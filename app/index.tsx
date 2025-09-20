@@ -5,7 +5,7 @@ import { Dimensions, Image, StatusBar, Text, TouchableOpacity, View } from 'reac
 
 const { width } = Dimensions.get('window');
 
-export default function Index({ navigation }: LoginScreenProps) {
+export default function HomeScreen({ navigation }: LoginScreenProps) {
   const [step, setStep] = useState(0);
 
   const steps = useMemo(

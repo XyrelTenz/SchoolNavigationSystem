@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/NavigationLogo.png",
+        "foregroundImage": "./assets/SchoolLogo.png",
         "backgroundColor": "#600EE6"
       }
     },

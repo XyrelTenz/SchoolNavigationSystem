@@ -1,15 +1,17 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import './global.css';
+//Opening Navigation
+import HomeScreen from 'app/index';
 //Auth Navigation
 import LoginScreen from '@/screen/auth/login';
-//Root Navigation
 import SignupScreen from '@/screen/auth/signup';
-//Client Navigation
+//Root Navigation
 import MainScreen from '@/screen/client/layout';
+//Client Navigation3
 import Search from '@/screen/client/search';
 //Types
-import type { RootStackParamList } from '@/types/navigation';
+import { RootStackParamList } from '@/types/navigation';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -17,7 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen
           name="Login"
           component={LoginScreen}
