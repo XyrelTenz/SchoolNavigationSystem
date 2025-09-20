@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import '../../../global.css';
+import '';
 import Building from './building';
 import Home from './dashboard';
 import Map from './maps';
@@ -13,10 +13,7 @@ const Tab = createBottomTabNavigator();
 
 export default function MainLayout() {
   return (
-    <SafeAreaView
-      className="flex-1"
-      style={{ backgroundColor: "white" }}
-    >
+    <SafeAreaView className="flex-1" style={{ backgroundColor: 'white' }}>
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
@@ -47,15 +44,14 @@ export default function MainLayout() {
           },
           tabBarBackground: () => null,
           tabBarHideOnKeyboard: true,
-        }}
-      >
+        }}>
         <Tab.Screen
           name="Home"
           component={Home}
           options={{
             tabBarIcon: ({ color, size, focused }) => (
               <Ionicons
-                name={focused ? "home" : "home-outline"}
+                name={focused ? 'home' : 'home-outline'}
                 size={focused ? size + 2 : size}
                 color={color}
               />
@@ -68,7 +64,7 @@ export default function MainLayout() {
           options={{
             tabBarIcon: ({ color, size, focused }) => (
               <Ionicons
-                name={focused ? "search" : "search-outline"}
+                name={focused ? 'search' : 'search-outline'}
                 size={focused ? size + 2 : size}
                 color={color}
               />
@@ -81,7 +77,7 @@ export default function MainLayout() {
           options={{
             tabBarIcon: ({ color, size, focused }) => (
               <Ionicons
-                name={focused ? "map" : "map-outline"}
+                name={focused ? 'map' : 'map-outline'}
                 size={focused ? size + 2 : size}
                 color={color}
               />
@@ -89,25 +85,25 @@ export default function MainLayout() {
           }}
         />
         <Tab.Screen
-            name="Building"
-            component={Building}
-            options={{
-              tabBarIcon: ({ color, size, focused }) => (
-                <Ionicons
-                  name={focused ? "business" : "business-outline"}
-                  size={focused ? size + 2 : size}
-                  color={color}
-                />
-              ),
-            }}
-          />
+          name="Building"
+          component={Building}
+          options={{
+            tabBarIcon: ({ color, size, focused }) => (
+              <Ionicons
+                name={focused ? 'business' : 'business-outline'}
+                size={focused ? size + 2 : size}
+                color={color}
+              />
+            ),
+          }}
+        />
         <Tab.Screen
           name="Profile"
           component={Profile}
           options={{
             tabBarIcon: ({ color, size, focused }) => (
               <Ionicons
-                name={focused ? "person" : "person-outline"}
+                name={focused ? 'person' : 'person-outline'}
                 size={focused ? size + 2 : size}
                 color={color}
               />

@@ -1,3 +1,4 @@
+import { styles } from '@/styles/signup';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import {
@@ -5,11 +6,10 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 
 const Signup = () => {
@@ -22,35 +22,25 @@ const Signup = () => {
   return (
     <KeyboardAvoidingView
       style={{ flex: 1, backgroundColor: 'white' }}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-    >
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <ScrollView
         contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingHorizontal: 24 }}
-        keyboardShouldPersistTaps="handled"
-      >
-        <View
-          className="w-full max-w-sm mx-auto space-y-5"
-          style={{ gap: 20 }}
-        >
+        keyboardShouldPersistTaps="handled">
+        <View className="mx-auto w-full max-w-sm space-y-5" style={{ gap: 20 }}>
           <View className="flex items-center">
             <Image
-              source={require('../../../assets/NavigationLogo.png')}
+              source={require('@assets/NavigationLogo.png')}
               style={{ width: 200, height: 200 }}
               resizeMode="contain"
             />
           </View>
 
-          <Text className="text-3xl font-bold text-center text-[#600EE6] mb-5">
+          <Text className="mb-5 text-center text-3xl font-bold text-[#600EE6]">
             Create Your Account
           </Text>
 
           {/* Student ID Input */}
-          <View
-            style={[
-              styles.inputContainer,
-              isStudentFocus && styles.focusedContainer
-            ]}
-          >
+          <View style={[styles.inputContainer, isStudentFocus && styles.focusedContainer]}>
             <Ionicons name="person-outline" size={24} color="#888" style={{ marginRight: 10 }} />
             <TextInput
               style={styles.input}
@@ -64,13 +54,13 @@ const Signup = () => {
           </View>
 
           {/* Password Input */}
-          <View
-            style={[
-              styles.inputContainer,
-              isPasswordFocus && styles.focusedContainer
-            ]}
-          >
-            <Ionicons name="lock-closed-outline" size={24} color="#888" style={{ marginRight: 10 }} />
+          <View style={[styles.inputContainer, isPasswordFocus && styles.focusedContainer]}>
+            <Ionicons
+              name="lock-closed-outline"
+              size={24}
+              color="#888"
+              style={{ marginRight: 10 }}
+            />
             <TextInput
               style={styles.input}
               placeholder="Password"
@@ -81,7 +71,7 @@ const Signup = () => {
             />
             <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
               <Ionicons
-                name={showPassword ? "eye-outline" : "eye-off-outline"}
+                name={showPassword ? 'eye-outline' : 'eye-off-outline'}
                 size={24}
                 color="#888"
               />
@@ -89,13 +79,13 @@ const Signup = () => {
           </View>
 
           {/* Confirm Password Input */}
-          <View
-            style={[
-              styles.inputContainer,
-              isConfirmFocus && styles.focusedContainer
-            ]}
-          >
-            <Ionicons name="lock-closed-outline" size={24} color="#888" style={{ marginRight: 10 }} />
+          <View style={[styles.inputContainer, isConfirmFocus && styles.focusedContainer]}>
+            <Ionicons
+              name="lock-closed-outline"
+              size={24}
+              color="#888"
+              style={{ marginRight: 10 }}
+            />
             <TextInput
               style={styles.input}
               placeholder="Confirm Password"
@@ -106,7 +96,7 @@ const Signup = () => {
             />
             <TouchableOpacity onPress={() => setShowConfirm(!showConfirm)}>
               <Ionicons
-                name={showConfirm ? "eye-outline" : "eye-off-outline"}
+                name={showConfirm ? 'eye-outline' : 'eye-off-outline'}
                 size={24}
                 color="#888"
               />
@@ -114,33 +104,13 @@ const Signup = () => {
           </View>
 
           {/* Sign Up Button */}
-          <TouchableOpacity className="w-full py-4 items-center justify-center bg-[#600EE6] rounded-md">
-            <Text className="text-white text-lg font-bold">SIGN UP</Text>
+          <TouchableOpacity className="w-full items-center justify-center rounded-md bg-[#600EE6] py-4">
+            <Text className="text-lg font-bold text-white">SIGN UP</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
 };
-
-const styles = StyleSheet.create({
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-  },
-  focusedContainer: {
-    borderColor: '#600EE6',
-  },
-  input: {
-    flex: 1,
-    fontSize: 16,
-    color: '#374151',
-  },
-});
 
 export default Signup;
