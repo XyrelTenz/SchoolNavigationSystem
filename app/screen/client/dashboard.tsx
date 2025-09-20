@@ -87,9 +87,9 @@ export default function UserLayout({ navigation }: LoginScreenProps) {
 
   const recentSearches: Search[] = useMemo(
     () => [
-      { id: 1, room: 'Room 304', building: 'Science Building', time: '10 min ago' },
-      { id: 2, room: 'Computer Lab 2', building: 'Tech Building', time: '1 hour ago' },
-      { id: 3, room: 'Principal Office', building: 'Admin Building', time: 'Yesterday' },
+      { id: 1, room: 'Room 306', building: 'Main Building', time: '10 min ago' },
+      { id: 2, room: 'Computer Lab - C', building: 'IT Building', time: '1 hour ago' },
+      { id: 3, room: 'IT Faculty', building: 'Main Building', time: 'Yesterday' },
     ],
     []
   );
