@@ -98,7 +98,7 @@ export const styles = StyleSheet.create({
   },
   infoCard: {
     backgroundColor: 'white',
-    borderRadius: 20,
+    borderRadius: 5,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.08,
@@ -124,21 +124,6 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 2,
     elevation: 1,
-  },
-  infoContent: {
-    flex: 1,
-  },
-  infoLabel: {
-    fontSize: 14,
-    color: '#64748B',
-    marginBottom: 4,
-    fontWeight: '500',
-  },
-  infoValue: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#1E293B',
-    lineHeight: 22,
   },
   buttonIcon: {
     marginRight: 10,

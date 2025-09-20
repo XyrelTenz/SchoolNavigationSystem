@@ -24,7 +24,7 @@ export default function UserProfile() {
       },
       {
         icon: 'school-outline',
-        label: 'Program',
+        label: 'Course',
         value: 'Bachelor of Science in Information Technology',
         bgColor: '#EEF2FF',
         iconColor: '#6366F1',
@@ -32,7 +32,7 @@ export default function UserProfile() {
       {
         icon: 'calendar-outline',
         label: 'Year Level',
-        value: '3rd Year',
+        value: '1st Year',
         bgColor: '#FEF3C7',
         iconColor: '#F59E0B',
       },
@@ -46,14 +46,14 @@ export default function UserProfile() {
       {
         icon: 'mail-outline',
         label: 'Email',
-        value: 'xyrel.tenefrancia@university.edu',
+        value: 'xdemocrito1@gmail.com',
         bgColor: '#E0F2FE',
         iconColor: '#0EA5E9',
       },
       {
         icon: 'call-outline',
         label: 'Phone',
-        value: '+63 912 345 6789',
+        value: '+63 950 171 2939',
         bgColor: '#FDF2F8',
         iconColor: '#EC4899',
       },
@@ -106,16 +106,6 @@ export default function UserProfile() {
                 iconColor={info.iconColor}
               />
             ))}
-
-            <View style={[styles.infoRow, { borderBottomWidth: 0 }]}>
-              <View style={[styles.infoIconContainer, { backgroundColor: '#ECFCCB' }]}>
-                <Ionicons name="location-outline" size={22} color="#65A30D" />
-              </View>
-              <View style={styles.infoContent}>
-                <Text style={styles.infoLabel}>Address</Text>
-                <Text style={styles.infoValue}>Davao City, Philippines</Text>
-              </View>
-            </View>
           </View>
 
           <TouchableOpacity onPress={handleLogout} style={styles.logoutButton} activeOpacity={0.7}>
