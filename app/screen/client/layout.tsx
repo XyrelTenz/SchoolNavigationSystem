@@ -2,9 +2,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Platform, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Building from './building';
 import Home from './dashboard';
 import Map from './maps';
+import Nearby from './nearby';
 import UserProfile from './profile';
 import Search from './search';
 
@@ -97,8 +97,8 @@ export default function MainLayout() {
           }}
         />
         <Tab.Screen
-          name="NearbyBuilding"
-          component={Building}
+          name="Nearby"
+          component={Nearby}
           options={{
             title: 'Nearby',
             tabBarIcon: ({ color, size, focused }) => (
