@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Building from './building';
 import Home from './dashboard';
 import Map from './maps';
-import Profile from './profile';
+import UserProfile from './profile';
 import Search from './search';
 
 const Tab = createBottomTabNavigator();
@@ -112,7 +112,7 @@ export default function MainLayout() {
         />
         <Tab.Screen
           name="Profile"
-          component={Profile}
+          component={UserProfile}
           options={{
             tabBarIcon: ({ color, size, focused }) => (
               <Ionicons

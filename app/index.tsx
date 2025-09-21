@@ -95,7 +95,7 @@ export default function HomeScreen({ navigation }: LoginScreenProps) {
                 alignItems: 'center',
               }}
               onPress={() => navigation.navigate('Signup')}>
-              <Text style={{ color: '#111827', fontWeight: 'bold', fontSize: 16 }}>SIGN UP</Text>
+              <Text style={{ color: '#16A34A', fontWeight: 'bold', fontSize: 16 }}>SIGN UP</Text>
             </TouchableOpacity>
           </View>
         )}

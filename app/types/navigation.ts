@@ -10,4 +10,5 @@ export type RootStackParamList = {
   Signup: undefined;
   MainScreen: undefined;
   Search: undefined;
+  Map: undefined;
 };
