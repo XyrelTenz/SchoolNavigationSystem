@@ -11,12 +11,12 @@ export default function HomeScreen({ navigation }: LoginScreenProps) {
   const steps = useMemo(
     () => [
       {
-        title: 'Welcome to School Navigation',
+        title: 'Welcome to Attendance Management System',
         description: 'Find classrooms, buildings, and facilities easily.',
         image: require('@assets/JHCSC.png'),
       },
       {
-        title: 'Interactive Campus Map',
+        title: 'Manage Realtime Attendance',
         description: 'Explore your school with real-time maps and directions.',
         image: require('@assets/JHCSC.png'),
       },
@@ -82,7 +82,7 @@ export default function HomeScreen({ navigation }: LoginScreenProps) {
                 alignItems: 'center',
               }}
               onPress={() => navigation.navigate('Login')}>
-              <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>LOGIN</Text>
+              <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>STUDENT</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -95,7 +95,7 @@ export default function HomeScreen({ navigation }: LoginScreenProps) {
                 alignItems: 'center',
               }}
               onPress={() => navigation.navigate('Signup')}>
-              <Text style={{ color: '#16A34A', fontWeight: 'bold', fontSize: 16 }}>SIGN UP</Text>
+              <Text style={{ color: '#16A34A', fontWeight: 'bold', fontSize: 16 }}>TEACHER</Text>
             </TouchableOpacity>
           </View>
         )}

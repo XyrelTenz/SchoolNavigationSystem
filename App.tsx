@@ -9,9 +9,9 @@ import LoginScreen from '@/screen/auth/login';
 import SignupScreen from '@/screen/auth/signup';
 //Root Navigation
 import MainScreen from '@/screen/client/layout';
-//Client Navigation3
-import Map from '@/screen/client/maps';
-import Search from '@/screen/client/search';
+//Client Navigation
+import Search from '@/screen/client/record';
+import Map from '@/screen/client/scan';
 //Types
 import { RootStackParamList } from '@/types/navigation';
 
@@ -22,19 +22,15 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{
-            title: '',
-            headerBackTitle: 'Back',
-            headerTintColor: '#16A34A',
+        <Stac
+           headerTintColor: '#16A34A',
             headerShadowVisible: false,
             headerStyle: {
               backgroundColor: 'white',
             },
           }}
         />
+
         <Stack.Screen
           name="Signup"
           component={SignupScreen}

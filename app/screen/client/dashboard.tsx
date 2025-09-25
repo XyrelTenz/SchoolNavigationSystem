@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useCallback, useMemo } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
-export default function UserLayout({ navigation }: LoginScreenProps) {
+export default function UserHome({ navigation }: LoginScreenProps) {
   const currentDate = useMemo(() => getFormattedDate(), []);
 
   const navigationFeatures: Feature[] | Building[] = useMemo(

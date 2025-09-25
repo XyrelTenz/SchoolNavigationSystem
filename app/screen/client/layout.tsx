@@ -3,10 +3,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Platform, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Home from './dashboard';
-import Map from './maps';
-import Nearby from './nearby';
 import UserProfile from './profile';
-import Search from './search';
+import Record from './record';
+import Scan from './scan';
+import Schedule from './schedule';
 
 const Tab = createBottomTabNavigator();
 
@@ -58,12 +58,12 @@ export default function MainLayout() {
           }}
         />
         <Tab.Screen
-          name="Search"
-          component={Search}
+          name="Record"
+          component={Record}
           options={{
             tabBarIcon: ({ color, size, focused }) => (
               <Ionicons
-                name={focused ? 'search' : 'search-outline'}
+                name={focused ? 'list' : 'list-outline'}
                 size={focused ? size + 2 : size}
                 color={color}
               />
@@ -71,8 +71,8 @@ export default function MainLayout() {
           }}
         />
         <Tab.Screen
-          name="Maps"
-          component={Map}
+          name="Scan"
+          component={Scan}
           options={{
             tabBarLabel: () => null,
             tabBarIcon: ({ focused }) => (
@@ -91,19 +91,19 @@ export default function MainLayout() {
                   shadowOpacity: 0.2,
                   shadowRadius: 3.5,
                 }}>
-                <Ionicons name={focused ? 'map' : 'map-outline'} size={28} color="white" />
+                <Ionicons name={focused ? 'scan' : 'scan-outline'} size={28} color="white" />
               </View>
             ),
           }}
         />
         <Tab.Screen
-          name="Nearby"
-          component={Nearby}
+          name="Schedule"
+          component={Schedule}
           options={{
-            title: 'Nearby',
+            title: 'Schedule',
             tabBarIcon: ({ color, size, focused }) => (
               <Ionicons
-                name={focused ? 'location' : 'location-outline'}
+                name={focused ? 'calendar' : 'calendar-outline'}
                 size={focused ? size + 2 : size}
                 color={color}
               />

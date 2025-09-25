@@ -1,10 +1,16 @@
+import { useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
-import MapView, { UrlTile } from 'react-native-maps';
+import MapView, { PROVIDER_DEFAULT, UrlTile } from 'react-native-maps';
+
+import { TILE_URL } from '@env';
 
 export default function MapScreen() {
+  const mapRef = useRef<MapView>(null);
+
   return (
     <View style={styles.container}>
       <MapView
+        ref={mapRef}
         style={styles.map}
         initialRegion={{
           latitude: 7.8247503,
@@ -12,13 +18,8 @@ export default function MapScreen() {
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
-        // provider={null} // so it uses UrlTile (OSM, not Google)
-      >
-        {/* OpenStreetMap Tiles */}
-        <UrlTile
-          urlTemplate="https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
-          maximumZ={20}
-        />
+        provider={PROVIDER_DEFAULT}>
+        <UrlTile urlTemplate={TILE_URL} maximumZ={20} />
       </MapView>
     </View>
   );

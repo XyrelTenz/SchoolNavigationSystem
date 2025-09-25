@@ -12,7 +12,6 @@ const Login = ({ navigation }: LoginScreenProps) => {
   const [password, setPassword] = useState('');
 
   const passwordRef = useRef<TextInput>(null);
-
   return (
     <View className="flex-1 items-center justify-center p-6" style={{ backgroundColor: 'white' }}>
       <View className="w-full max-w-sm" style={{ gap: 15 }}>
